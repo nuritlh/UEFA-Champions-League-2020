@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Redirect } from 'react-router-dom';
 import { get } from '../services/api/axios';
 import styled from 'styled-components';
 import Player from './Player';
@@ -59,7 +59,7 @@ const Team = () => {
   useEffect(() => {
     get(`${TEAM_DETAIL_URL}/${id}`).then(res => {
       setTeam(res.data);
-    });
+    }).catch(error => <Redirect exact to="/teams" />);
   },[id]);
 
   return (

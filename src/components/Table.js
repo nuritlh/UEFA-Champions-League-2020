@@ -52,7 +52,7 @@ const TeamsTable = ({ data }) => {
   const history = useHistory();
   const { headers, rows } = data;
   return (
-    <StyledTeamsTable>
+    <StyledTeamsTable id="teamTable">
       <thead>
         <tr>
           {headers.map(header => (
