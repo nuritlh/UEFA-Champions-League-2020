@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { get } from '../services/api/axios';
 import styled from 'styled-components';
 import Player from './Player';
@@ -40,10 +40,20 @@ const PlayerWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const BackButton = styled.button`
+  display: flex;
+  align-self: baseline;
+  padding: 5px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  `;
+
 const TEAM_DETAIL_URL = 'https://api.football-data.org/v2/teams';
 
 const Team = () => {
   let { id } = useParams();
+  const history = useHistory();
   const [team, setTeam] = useState(null);
 
   useEffect(() => {
@@ -56,6 +66,7 @@ const Team = () => {
     <TeamWrapper>
       {team
         ? <>
+          <BackButton onClick={() => history.push('/teams')}>Back to Table</BackButton>
           <PageHeader>
             <TeamImg src={team.crestUrl} alt="team-logo"/>
             <h1>{team.name}</h1>

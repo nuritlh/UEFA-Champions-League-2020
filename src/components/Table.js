@@ -5,7 +5,18 @@ import styled from 'styled-components';
 const StyledTeamsTable = styled.table`
   border-spacing: 0;
   border: 1px solid black;
-
+  thead {
+    background-color: #192c5b29;
+    font-size: 24px;
+  }
+  
+  tbody tr  {
+    &:hover {
+    background-color: #cccccc4a;
+    }
+  }
+  }
+  
   tr {
     :last-child {
       td {
@@ -25,6 +36,15 @@ const StyledTeamsTable = styled.table`
       border-right: 0;
     }
   }
+  tbody tr {
+    
+  }
+  
+  tbody tr td {
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+  }
 `;
 
 const TeamsTable = ({ data }) => {
@@ -43,7 +63,7 @@ const TeamsTable = ({ data }) => {
       {rows.map(row => (
         <tr key={row.id} onClick={() => history.push(`/teams/${row.id}`)}>
           {Object.keys(row.team).map((key)=>(
-            <th key={key}>{row.team[`${key}`]}</th>
+            <td key={key}>{row.team[`${key}`]}</td>
           ))}
         </tr>
       ))}
