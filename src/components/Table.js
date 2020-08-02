@@ -1,9 +1,8 @@
-import React from 'react'
-import { useTable } from 'react-table';
+import React from 'react';
+import { useHistory } from "react-router-dom";
 import styled from 'styled-components';
 
-
-const StyledTable = styled.table`
+const StyledTeamsTable = styled.table`
   border-spacing: 0;
   border: 1px solid black;
 
@@ -26,47 +25,31 @@ const StyledTable = styled.table`
       border-right: 0;
     }
   }
-`
+`;
 
-const Table = ({ columns, data }) => {
-  // Use the state and functions returned from useTable to build your UI
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    data,
-  });
-
-  // Render the UI for your table
+const TeamsTable = ({ data }) => {
+  const history = useHistory();
+  const { headers, rows } = data;
   return (
-    <StyledTable {...getTableProps()}>
+    <StyledTeamsTable>
       <thead>
-      {headerGroups.map(headerGroup => (
-        <tr {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map(column => (
-            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+        <tr>
+          {headers.map(header => (
+            <th key={header}>{header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+      {rows.map(row => (
+        <tr key={row.id} onClick={() => history.push(`/teams/${row.id}`)}>
+          {Object.keys(row.team).map((key)=>(
+            <th key={key}>{row.team[`${key}`]}</th>
           ))}
         </tr>
       ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-      {rows.map((row, i) => {
-        prepareRow(row);
-        return (
-          <tr {...row.getRowProps()}>
-            {row.cells.map(cell => {
-              return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-            })}
-          </tr>
-        )
-      })}
       </tbody>
-    </StyledTable>
+    </StyledTeamsTable>
   )
 };
 
-export default Table;
+export default TeamsTable;

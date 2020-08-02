@@ -1,15 +1,14 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Teams from './components/Teams';
 import Team from './components/Team';
-import { Router, Route, Redirect } from 'react-router-dom';
-import { history } from './history';
 
 const App = () => (
-  <Router history={history}>
+  <Router>
     <Route
       exact
       path="/"
-      render={() => (<Redirect to={"/teams"} />)}
+      render={() => (<Redirect exact to="/teams" />)}
     />
     <Route
       exact

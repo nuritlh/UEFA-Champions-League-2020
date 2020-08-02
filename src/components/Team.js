@@ -4,8 +4,6 @@ import { get } from '../services/api/axios';
 import styled from 'styled-components';
 import Player from './Player';
 
-const TEAM_DETAIL_URL = 'https://api.football-data.org/v2/teams';
-
 const TeamWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,15 +40,15 @@ const PlayerWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const Team = () => {
+const TEAM_DETAIL_URL = 'https://api.football-data.org/v2/teams';
 
+const Team = () => {
   let { id } = useParams();
   const [team, setTeam] = useState(null);
 
   useEffect(() => {
     get(`${TEAM_DETAIL_URL}/${id}`).then(res => {
       setTeam(res.data);
-      console.log('res', res.data);
     });
   },[id]);
 
