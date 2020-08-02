@@ -1,7 +1,7 @@
 import React from "react";
 import Teams from './components/Teams';
 import Team from './components/Team';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Redirect } from 'react-router-dom';
 import { history } from './history';
 
 const App = () => (
@@ -9,7 +9,7 @@ const App = () => (
     <Route
       exact
       path="/"
-      render={() => (<Teams />)}
+      render={() => (<Redirect to={"/teams"} />)}
     />
     <Route
       exact

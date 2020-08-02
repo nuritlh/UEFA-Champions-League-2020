@@ -1,5 +1,32 @@
 import React from 'react'
 import { useTable } from 'react-table';
+import styled from 'styled-components';
+
+
+const StyledTable = styled.table`
+  border-spacing: 0;
+  border: 1px solid black;
+
+  tr {
+    :last-child {
+      td {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  th,
+  td {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    :last-child {
+      border-right: 0;
+    }
+  }
+`
 
 const Table = ({ columns, data }) => {
   // Use the state and functions returned from useTable to build your UI
@@ -16,7 +43,7 @@ const Table = ({ columns, data }) => {
 
   // Render the UI for your table
   return (
-    <table {...getTableProps()}>
+    <StyledTable {...getTableProps()}>
       <thead>
       {headerGroups.map(headerGroup => (
         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -38,7 +65,7 @@ const Table = ({ columns, data }) => {
         )
       })}
       </tbody>
-    </table>
+    </StyledTable>
   )
 };
 
