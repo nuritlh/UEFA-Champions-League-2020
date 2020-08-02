@@ -7,7 +7,7 @@ project was bootstrapped with [Create React App](https://github.com/facebook/cre
  2. `npm start`  run the app on your loacalhost (please make sure port 3000 is available).
 
 
-## testing setup
+## Testing setup
  1. `npm test` - need to complete tests.
 
 ## Deployment with Vercel
