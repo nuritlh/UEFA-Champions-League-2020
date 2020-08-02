@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, Redirect } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { get } from '../services/api/axios';
 import styled from 'styled-components';
 import Player from './Player';
@@ -55,12 +55,19 @@ const Team = () => {
   let { id } = useParams();
   const history = useHistory();
   const [team, setTeam] = useState(null);
+  const [imgSrc, setImgSrc] = useState('/UEFA.svg.png');
 
   useEffect(() => {
     get(`${TEAM_DETAIL_URL}/${id}`).then(res => {
-      setTeam(res.data);
-    }).catch(error => <Redirect exact to="/teams" />);
-  },[id]);
+      if(res) {
+        setTeam(res.data);
+        setImgSrc(res.data.crestUrl)
+      }
+      else {
+        history.push('/NotFoundPage')
+      }
+    }).catch(error => console.log(error));
+  },[id, history]);
 
   return (
     <TeamWrapper>
@@ -68,9 +75,9 @@ const Team = () => {
         ? <>
           <BackButton onClick={() => history.push('/teams')}>Back to Table</BackButton>
           <PageHeader>
-            <TeamImg src={team.crestUrl} alt="team-logo"/>
+            <TeamImg src={imgSrc} alt="league-logo" />
             <h1>{team.name}</h1>
-            <TeamImg src={team.crestUrl} alt="team-logo"/>
+            <TeamImg src={imgSrc} alt="team-logo" onError={() => {setImgSrc('/UEFA.svg.png')}}/>
           </PageHeader>
           <PageBody>
             <p>Fonded at: {team.founded}</p>
@@ -78,8 +85,7 @@ const Team = () => {
             <p>Address: {team.address}</p>
             <MidTitle>Squad</MidTitle>
             <PlayerWrapper>
-              {team.squad.map(player => (<Player player={player} key={player.id}/>)
-              )}
+              {team.squad.map(player => (<Player player={player} key={player.id}/>))}
             </PlayerWrapper>
           </PageBody>
         </>

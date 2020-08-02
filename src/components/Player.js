@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
-const CardWrapper = styled.div`
+const Wrapper = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
   margin: 48px auto 0;
@@ -12,22 +12,22 @@ const CardWrapper = styled.div`
   border-radius: 5px;
 `;
 
-const CardHeader = styled.header`
+const HeaderWrapper = styled.header`
   padding: 15px
 `;
 
-const CardHeading = styled.h1`
+const Header = styled.h1`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
   margin: 0px
 `;
 
-const CardBody = styled.div`
+const Body = styled.div`
   padding: 0 20px 0 20px
 `;
 
-const CardOptionsNote = styled.small`
+const OptionsNote = styled.small`
   padding-top: 8px;
   display: block;
   width: 100%;
@@ -38,18 +38,18 @@ const CardOptionsNote = styled.small`
 const Player = ({ player }) => {
   const { shirtNumber, countryOfBirth, dateOfBirth, position, nationality } = player;
   return (
-    <CardWrapper>
-      <CardHeader>
-        <CardHeading>{ player.name }</CardHeading>
-      </CardHeader>
-      <CardBody>
-        <CardOptionsNote>Shirt Number: { shirtNumber }</CardOptionsNote>
-        <CardOptionsNote>Date Of Birth: { moment(dateOfBirth).format('MMMM Do YYYY') }</CardOptionsNote>
-        <CardOptionsNote>Position: { position }</CardOptionsNote>
-        <CardOptionsNote>Country Of Birth: { countryOfBirth }</CardOptionsNote>
-        <CardOptionsNote>Nationality: { nationality }</CardOptionsNote>
-      </CardBody>
-    </CardWrapper>
+    <Wrapper>
+      <HeaderWrapper>
+        <Header>{ player.name }</Header>
+      </HeaderWrapper>
+      <Body>
+        <OptionsNote>Shirt Number: { shirtNumber }</OptionsNote>
+        <OptionsNote>Date Of Birth: { moment(dateOfBirth).format('MMMM Do YYYY') }</OptionsNote>
+        <OptionsNote>Position: { position }</OptionsNote>
+        <OptionsNote>Country Of Birth: { countryOfBirth }</OptionsNote>
+        <OptionsNote>Nationality: { nationality }</OptionsNote>
+      </Body>
+    </Wrapper>
   )
 };
 

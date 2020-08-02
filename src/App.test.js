@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from "react-router-dom";
 import Teams from './components/Teams';
 import NotFoundPage from './components/NotFoundPage';
 import App from './App';
@@ -8,7 +8,7 @@ import App from './App';
 describe('routes using memory router', () => {
   test('invalid path should redirect to 404', () => {
     const wrapper = mount(
-      <MemoryRouter initialEntries={ [ '/random' ] }>
+      <MemoryRouter initialEntries={ [ '/NotFoundPage' ] }>
         <App/>
       </MemoryRouter>
     );
@@ -19,7 +19,7 @@ describe('routes using memory router', () => {
 
   test('valid path should not redirect to 404', () => {
     const wrapper = mount(
-      <MemoryRouter initialEntries={ [ '/tesms' ] }>
+      <MemoryRouter initialEntries={ [ '/teams' ] }>
         <App/>
       </MemoryRouter>
     );

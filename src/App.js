@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Teams from './components/Teams';
 import Team from './components/Team';
 import NotFoundPage from './components/NotFoundPage'
@@ -22,7 +22,7 @@ const App = () => (
         path="/teams/:id"
         render={(match) => (<Team match={match}/>)}
       />
-      <Route component={NotFoundPage} />
+      <Route path='*' exact={true} component={NotFoundPage} />
     </Switch>
   </Router>
 );

@@ -21,7 +21,7 @@ const NotFoundPage = () => {
   return (
     <>
       <BackButton onClick={() => history.push('/teams')}>Back to Table</BackButton>
-      <StyledDiv>Not Found Page</StyledDiv>
+      <StyledDiv>Page Not Found</StyledDiv>
     </>
   )
 };

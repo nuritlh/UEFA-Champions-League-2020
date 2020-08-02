@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Table from './Table';
+import Table from './TeamTable';
 import styled from 'styled-components';
 import { get } from '../services/api/axios';
+import { compareByName } from '../services/utils';
 
-const TeamPageWrapper = styled.div`
+const PageWrapper = styled.div`
   padding: 1rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
 
-const TeamPageHeader = styled.div`
+const PageHeader = styled.div`
   font-size: 32px;
   font-weight: 600;
   display: flex;
@@ -37,12 +38,13 @@ const Teams = () => {
 
   useEffect(() => {
     get(TEAMS_URL).then(res => {
-      const dataToUse = mackDataReadyToUseTable(res.data.teams);
+      const sortedTeams = res.data.teams.sort(compareByName);
+      const dataToUse = makeDataReadyToUseTable (sortedTeams);
       setTeams(dataToUse);
     });
   },[]);
 
-  const mackDataReadyToUseTable = useCallback((data) => {
+  const makeDataReadyToUseTable = useCallback((data) => {
     const teams = data.map(team => (
       {
         id: team.id,
@@ -53,6 +55,7 @@ const Teams = () => {
             add: team.address,
           }}
     ));
+
     return {
       headers: ['Name', 'Founded', 'Address'],
       rows: teams
@@ -62,21 +65,22 @@ const Teams = () => {
   return (
     <>
     {teams
-      ? <TeamPageWrapper>
+      ? <PageWrapper>
           <>
-            <TeamPageHeader>
+            <PageHeader>
               <PageTitleImg src="/UEFA.svg.png"/>
               UEFA Champions League
               <PageTitleImg src="/UEFA.svg.png"/>
-            </TeamPageHeader>
+            </PageHeader>
             <TableWrapper>
               <Table data={teams} />
             </TableWrapper>
           </>
-        </TeamPageWrapper>
+        </PageWrapper>
       :  <div>Loading...</div>}
     </>
   )
 };
 
-export default React.memo(Teams);
+// export default React.memo(Teams);
+export default Teams;
