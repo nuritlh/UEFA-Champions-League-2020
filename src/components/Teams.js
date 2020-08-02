@@ -12,7 +12,7 @@ const PageWrapper = styled.div`
 `;
 
 const PageHeader = styled.div`
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -27,7 +27,8 @@ const PageTitleImg = styled.img`
 
 const TableWrapper = styled.div`
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
+  overflow-x: auto;
 `;
 
 const TEAMS_URL = 'https://api.football-data.org/v2/competitions/2001/teams';

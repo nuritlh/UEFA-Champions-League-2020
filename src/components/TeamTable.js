@@ -8,7 +8,7 @@ const StyledTeamsTable = styled.table`
   width: 100%;
   thead {
     background-color: #192c5b29;
-    font-size: 24px;
+    font-size: 1rem;
   }
   
   tbody tr  {
