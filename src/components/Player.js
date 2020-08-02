@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
-const StyledWrapper = styled.div`
+const CardWrapper = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
   margin: 48px auto 0;
@@ -38,7 +38,7 @@ const CardOptionsNote = styled.small`
 const Player = ({ player }) => {
   const { shirtNumber, countryOfBirth, dateOfBirth, position, nationality } = player;
   return (
-    <StyledWrapper>
+    <CardWrapper>
       <CardHeader>
         <CardHeading>{ player.name }</CardHeading>
       </CardHeader>
@@ -49,7 +49,7 @@ const Player = ({ player }) => {
         <CardOptionsNote>Country Of Birth: { countryOfBirth }</CardOptionsNote>
         <CardOptionsNote>Nationality: { nationality }</CardOptionsNote>
       </CardBody>
-    </StyledWrapper>
+    </CardWrapper>
   )
 };
 
