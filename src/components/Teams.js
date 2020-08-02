@@ -79,4 +79,4 @@ const Teams = () => {
   )
 };
 
-export default Teams;
+export default React.memo(Teams);

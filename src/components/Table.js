@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const StyledTeamsTable = styled.table`
   border-spacing: 0;
   border: 1px solid black;
+  width: 100%;
   thead {
     background-color: #192c5b29;
     font-size: 24px;
