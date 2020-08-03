@@ -23,6 +23,14 @@ const TeamImg = styled.img`
   margin: 10px
 `;
 
+const SecondLogoImg = styled.img`
+  width: 5rem;
+  margin: 10px;
+  @media (max-width: 400px) {
+    display: none;
+  }
+`;
+
 const PageBody = styled.div`
   display: flex;
   justify-content: center;
@@ -48,6 +56,7 @@ const BackButton = styled.button`
   border: 1px solid #ccc;
   border-radius: 3px;
   `;
+
 
 const TEAM_DETAIL_URL = 'https://api.football-data.org/v2/teams';
 
@@ -75,9 +84,9 @@ const Team = () => {
         ? <>
           <BackButton onClick={() => history.push('/teams')}>Back to Table</BackButton>
           <PageHeader>
-            <TeamImg src={imgSrc} alt="league-logo" />
+            <TeamImg src={imgSrc} alt="team-logo" onError={() => {setImgSrc('/UEFA.svg.png')}} classname="second-logo-img"/>
             <h1>{team.name}</h1>
-            <TeamImg src={imgSrc} alt="team-logo" onError={() => {setImgSrc('/UEFA.svg.png')}}/>
+            <SecondLogoImg src={imgSrc} alt="league-logo" />
           </PageHeader>
           <PageBody>
             <p>Fonded at: {team.founded}</p>

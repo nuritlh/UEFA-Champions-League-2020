@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="528bd7d8-d845-4d41-8c1c-d2079bf41ae7" name="Default Changelist" comment="">
+    <list default="true" id="528bd7d8-d845-4d41-8c1c-d2079bf41ae7" name="Default Changelist" comment="remove unfinished test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TeamTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TeamTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Team.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +22,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/dev/services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -50,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Jest.routes using memory router">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Testing Team Table component" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -178,7 +177,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
